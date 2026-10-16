@@ -1,0 +1,28 @@
+# Параметры экспериментов (зеркало src/config.py — единый источник значений).
+# Используется DVC-пайплайном (dvc.yaml). Значения совпадают с RANDOM_STATE,
+# TEST_SIZE и CV_FOLDS в src/config.py.
+split:
+  test_size: 0.2
+  random_state: 42
+  stratify: true
+
+cv:
+  folds: 5
+  shuffle: true
+  random_state: 42
+
+tuning:
+  method: randomized_search
+  n_iter: 12
+  cv_folds: 3
+  scoring: roc_auc
+
+models:
+  list: [logreg, random_forest, xgboost, lightgbm]
+  imbalance_aware: true
+
+threshold:
+  method: oof_f1_max
+  grid_start: 0.05
+  grid_stop: 0.95
+  grid_points: 91

@@ -1,0 +1,68 @@
+# DVC-пайплайн проекта (альтернатива Makefile для команд, использующих DVC).
+#
+#   dvc repro            # воспроизвести весь граф: download -> train -> evaluate
+#   dvc dag              # посмотреть граф зависимостей
+#
+# Параметры экспериментов — в params.yaml (зеркало src/config.py).
+# Требуется установленный DVC:  pip install dvc
+stages:
+  download:
+    desc: "Скачивание датасетов с проверкой SHA-256"
+    cmd: python -m src.download
+    deps:
+      - src/download.py
+      - src/config.py
+    outs:
+      - data/raw/telco_customer_churn.csv
+      - data/raw/bank_marketing.csv
+
+  train_telco:
+    desc: "Telco Churn: препроцессинг, 4 модели, CV, тюнинг, порог, отчёты"
+    cmd: python -m src.pipeline --dataset telco
+    deps:
+      - src
+      - data/raw/telco_customer_churn.csv
+    params:
+      - split
+      - cv
+      - tuning
+      - threshold
+    outs:
+      - models/telco_best_model.joblib
+    metrics:
+      - reports/metrics/telco_test_metrics.csv:
+          cache: false
+      - reports/metrics/telco_final_metrics.csv:
+          cache: false
+    plots:
+      - reports/figures/telco_roc_curves.png
+      - reports/figures/telco_confusion_matrices.png
+      - reports/figures/telco_feature_importance.png
+      - reports/figures/telco_threshold_curve.png
+
+  train_bank:
+    desc: "Bank Marketing: препроцессинг, 4 модели, CV, тюнинг, порог, отчёты"
+    cmd: python -m src.pipeline --dataset bank
+    deps:
+      - src
+      - data/raw/bank_marketing.csv
+    params:
+      - split
+      - cv
+      - tuning
+      - threshold
+    outs:
+      - models/bank_best_model.joblib
+    metrics:
+      - reports/metrics/bank_test_metrics.csv:
+          cache: false
+      - reports/metrics/bank_final_metrics.csv:
+          cache: false
+      - reports/metrics/bank_duration_leakage.csv:
+          cache: false
+    plots:
+      - reports/figures/bank_roc_curves.png
+      - reports/figures/bank_confusion_matrices.png
+      - reports/figures/bank_feature_importance.png
+      - reports/figures/bank_threshold_curve.png
+      - reports/figures/bank_duration_leakage.png
