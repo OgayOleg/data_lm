@@ -1,0 +1,100 @@
+{
+  "dataset": "telco",
+  "title": "Telco Customer Churn",
+  "n_rows": 7043,
+  "n_features_model_matrix": 26,
+  "positive_rate": 0.2653698707936959,
+  "best_model": "logreg",
+  "final_model": "logreg_tuned",
+  "decision_threshold": 0.58,
+  "test_metrics": [
+    {
+      "model": "logreg",
+      "accuracy": 0.7338537970191625,
+      "precision": 0.4991652754590985,
+      "recall": 0.7994652406417112,
+      "f1": 0.6145940390544707,
+      "roc_auc": 0.8468624867601849,
+      "avg_precision": 0.667538286264443
+    },
+    {
+      "model": "xgboost",
+      "accuracy": 0.759403832505323,
+      "precision": 0.5342465753424658,
+      "recall": 0.7299465240641712,
+      "f1": 0.6169491525423729,
+      "roc_auc": 0.8351145728383579,
+      "avg_precision": 0.6474974006972033
+    },
+    {
+      "model": "random_forest",
+      "accuracy": 0.7579843860894251,
+      "precision": 0.534020618556701,
+      "recall": 0.6925133689839572,
+      "f1": 0.6030267753201397,
+      "roc_auc": 0.8338758428272496,
+      "avg_precision": 0.6441561642447868
+    },
+    {
+      "model": "lightgbm",
+      "accuracy": 0.7757274662881476,
+      "precision": 0.5627705627705628,
+      "recall": 0.6951871657754011,
+      "f1": 0.6220095693779905,
+      "roc_auc": 0.8277274018962,
+      "avg_precision": 0.6276274473498609
+    },
+    {
+      "model": "logreg_tuned",
+      "accuracy": 0.7324343506032647,
+      "precision": 0.49747899159663866,
+      "recall": 0.7914438502673797,
+      "f1": 0.6109391124871001,
+      "roc_auc": 0.8475858327520731,
+      "avg_precision": 0.6696737079067336
+    },
+    {
+      "model": "logreg_tuned@0.58",
+      "accuracy": 0.7743080198722498,
+      "precision": 0.5557768924302788,
+      "recall": 0.7459893048128342,
+      "f1": 0.636986301369863,
+      "roc_auc": 0.8475858327520731,
+      "avg_precision": 0.6696737079067336
+    }
+  ],
+  "top_features": {
+    "Contract": 0.03809760004133396,
+    "tenure": 0.02505928853754933,
+    "tenure_group": 0.010538634426102433,
+    "InternetService": 0.008695135498204576,
+    "is_new_customer": 0.006268051357565407,
+    "TotalCharges": 0.0030995375752408405,
+    "MultipleLines": 0.0028393913560154083,
+    "TechSupport": 0.0023893668139191916,
+    "OnlineSecurity": 0.002325040688211999,
+    "is_electronic_check": 0.0015632023560411934,
+    "SeniorCitizen": 0.0011806039939032064,
+    "PhoneService": 0.0011725955204215488,
+    "PaperlessBilling": 0.001086569014957739,
+    "MonthlyCharges": 0.0009346663566611957,
+    "avg_monthly_charge": 0.0007290294246815598,
+    "StreamingMovies": 0.0005342426825802216,
+    "OnlineBackup": 0.0005035004779250007,
+    "Dependents": 0.00041928233744081833,
+    "StreamingTV": 0.0003159471957425719,
+    "DeviceProtection": 0.00019478674210131607
+  },
+  "figures": [
+    "telco_target_balance.png",
+    "telco_correlation_heatmap.png",
+    "telco_roc_curves.png",
+    "telco_pr_curves.png",
+    "telco_confusion_matrices.png",
+    "telco_cv_roc_auc_boxplot.png",
+    "telco_model_comparison.png",
+    "telco_feature_importance.png",
+    "telco_threshold_curve.png"
+  ],
+  "model_path": "telco_best_model.joblib"
+}

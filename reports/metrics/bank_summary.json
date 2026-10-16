@@ -1,0 +1,100 @@
+{
+  "dataset": "bank",
+  "title": "Bank Marketing (bank-additional-full)",
+  "n_rows": 41188,
+  "n_features_model_matrix": 24,
+  "positive_rate": 0.11265417111780131,
+  "best_model": "xgboost",
+  "final_model": "xgboost_tuned",
+  "decision_threshold": 0.19,
+  "test_metrics": [
+    {
+      "model": "xgboost",
+      "accuracy": 0.8492352512745812,
+      "precision": 0.3965744400527009,
+      "recall": 0.6487068965517241,
+      "f1": 0.4922322158626329,
+      "roc_auc": 0.8095945710882588,
+      "avg_precision": 0.48700330836702627
+    },
+    {
+      "model": "lightgbm",
+      "accuracy": 0.8533624666181112,
+      "precision": 0.40540540540540543,
+      "recall": 0.646551724137931,
+      "f1": 0.4983388704318937,
+      "roc_auc": 0.8089224432756261,
+      "avg_precision": 0.4902982155277994
+    },
+    {
+      "model": "random_forest",
+      "accuracy": 0.8653799465889779,
+      "precision": 0.4309687261632342,
+      "recall": 0.6088362068965517,
+      "f1": 0.5046895935685574,
+      "roc_auc": 0.8029467044436056,
+      "avg_precision": 0.4843141611715083
+    },
+    {
+      "model": "logreg",
+      "accuracy": 0.8351541636319495,
+      "precision": 0.36809815950920244,
+      "recall": 0.646551724137931,
+      "f1": 0.4691164972634871,
+      "roc_auc": 0.8009043026793717,
+      "avg_precision": 0.4561056617343592
+    },
+    {
+      "model": "xgboost_tuned",
+      "accuracy": 0.9014323865015781,
+      "precision": 0.6895424836601307,
+      "recall": 0.2273706896551724,
+      "f1": 0.3419773095623987,
+      "roc_auc": 0.8170492269682532,
+      "avg_precision": 0.49161932711694467
+    },
+    {
+      "model": "xgboost_tuned@0.19",
+      "accuracy": 0.8783685360524399,
+      "precision": 0.46901172529313234,
+      "recall": 0.603448275862069,
+      "f1": 0.527803958529689,
+      "roc_auc": 0.8170492269682532,
+      "avg_precision": 0.49161932711694467
+    }
+  ],
+  "top_features": {
+    "nr.employed": 0.04747374581348176,
+    "emp.var.rate": 0.03277887518279168,
+    "euribor3m": 0.011778503703004928,
+    "contact": 0.010729751403368116,
+    "cons.price.idx": 0.008670220293410047,
+    "cons.conf.idx": 0.005822901434029882,
+    "campaign": 0.005434837728194708,
+    "macro_stress": 0.0038433416670597075,
+    "pdays_recency": 0.0030625854993159727,
+    "month": 0.002698432119439631,
+    "poutcome": 0.0025130460163215185,
+    "day_of_week": 0.002310589532525098,
+    "age": 0.0022985311807161013,
+    "default": 0.0013632571111845016,
+    "previous": 0.0010280850511816598,
+    "season": 0.00040799389122130324,
+    "job": 0.00018957262135006482,
+    "housing": 0.00011930102835038259,
+    "was_contacted_before": 9.932661918015118e-05,
+    "marital": 7.635973394970463e-06
+  },
+  "figures": [
+    "bank_target_balance.png",
+    "bank_correlation_heatmap.png",
+    "bank_roc_curves.png",
+    "bank_pr_curves.png",
+    "bank_confusion_matrices.png",
+    "bank_cv_roc_auc_boxplot.png",
+    "bank_model_comparison.png",
+    "bank_feature_importance.png",
+    "bank_threshold_curve.png"
+  ],
+  "model_path": "bank_best_model.joblib"
+}
