@@ -34,8 +34,8 @@ notebooks:  ## Выполнить все Jupyter-ноутбуки (обнови�
 presentation:  ## Собрать HTML-презентацию из метрик и графиков
 	$(PYTHON) scripts/build_presentation.py
 
-presentation-defense:  ## Собрать PowerPoint-презентацию для защиты (10 слайдов)
-	$(PYTHON) scripts/build_defense_presentation.py
+presentation-defense:  ## Собрать расширенную PowerPoint-презентацию для защиты (20 слайдов)
+	$(PYTHON) scripts/build_extended_defense_presentation.py
 
 test:  ## Модульные тесты
 	$(PYTHON) -m pytest tests/ -v
