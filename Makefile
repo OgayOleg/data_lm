@@ -9,7 +9,7 @@ PIP         ?= .venv/bin/pip
 DATASET     ?= all
 
 .DEFAULT_GOAL := help
-.PHONY: help setup data pipeline pipeline-fast notebooks presentation test lint format check clean all
+.PHONY: help setup data pipeline pipeline-fast notebooks presentation presentation-defense test lint format check clean all
 
 help:  ## Показать список команд
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[36m%-16s\033[0m %s\n", $$1, $$2}'
@@ -33,6 +33,9 @@ notebooks:  ## Выполнить все Jupyter-ноутбуки (обнови�
 
 presentation:  ## Собрать HTML-презентацию из метрик и графиков
 	$(PYTHON) scripts/build_presentation.py
+
+presentation-defense:  ## Собрать PowerPoint-презентацию для защиты (10 слайдов)
+	$(PYTHON) scripts/build_defense_presentation.py
 
 test:  ## Модульные тесты
 	$(PYTHON) -m pytest tests/ -v
